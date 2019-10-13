@@ -4,7 +4,7 @@ from pro_lambda import pro_lambda
 import asyncio
 
 
-def test():
+def test_main():
     some = pro_lambda(lambda : 1)
     other = some + 1
     assert other() == 2
