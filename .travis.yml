@@ -1,12 +1,17 @@
 language: python
 python:
-  - "3.7"
-  - "3.7-dev"  # 3.7 development branch
-  - "3.8-dev"  # 3.8 development branch
-  - "nightly"  # nightly build
-# command to install dependencies
+- '3.7'
+- 3.7-dev
+- 3.8-dev
+- nightly
 install:
-  - python3 setup.py install
-# command to run tests
+- python3 setup.py install test
 script:
-  - pytest
+- pytest
+deploy:
+  provider: pypi
+  user: andvikt
+  password:
+    secure: Xt4PYVNkM5QAZhib1lB0FS9SBTQ9ec14ERL+LSI0oCuwVe0cnqPgJCJ21BclbfvzVdVn5MS1aZzNMtzKFjFRmoPqs6SLzwKSv6OUhS4OwdaUpZncC6YstIYZaZn1iuH32A6c/IBlIN83DjLZbOPZXSBadiFODXVs7RrO75cGbxQYrlf2QNB34tuubrYqkRDqTk5oOgrB9AZkWV9RdvqBuwTuIfypRLMGbk6WwEz1DWBZKWk5XkM7LKEP7U4mUziHcFhsX529lsDD9uSvEe1QfvRT3S9KYuYWSZ57y+1v+c/xbJFp10q/QI013GSEqG4RGFbcGDw1zf5MCfncUd4AGbX5DcvqXZg8b7UqB5ykphQmb8xn11j00vt/10VEJa92GXmBShZ5cUVGtpnVybG/jyiqDbdbGjIbhp64VwCeI/7KoWzhS+1wMTEUp91jFK4LXzvqWDevsPY99GflaVdaeFrMinjrPuozsW6pUfDPXrrXuzGE6wqh3d6gcGKbLnkecouBMjBQ22Er369g57Z7SZuC7OduqKiv8c3exDGlBCtymytPu5tnNluGCMZoFXlk7BvO1zJGlwFbPbgyeeALPgoj3N0pVhKO+DwkWgAgt1Hm3231xRtTYZa2WVDy5lCclssKGHHNICpb9CHMHaxi5HRQyGmvCL/DEG5Q5jviZd4=
+  on:
+    tags: true
