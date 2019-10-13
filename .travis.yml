@@ -6,6 +6,7 @@ python:
 - nightly
 install:
 - pip3 install -r test_require.txt
+- pip3 install -r build_require.txt
 - python3 setup.py install
 script:
 - pytest
