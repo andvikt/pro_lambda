@@ -39,6 +39,14 @@ def cls_init(foo):
 
 
 def _is_async(*foo):
+    """
+    Returns True if function is coroutinefunction or if it returns Awaitable
+    Args:
+        *foo:
+
+    Returns:
+
+    """
     for x in foo:
         if getattr(x, '_is_async', False) or asyncio.iscoroutinefunction(x):
             return True

@@ -1,52 +1,47 @@
 import asyncio
-import functools
 from copy import copy
 import typing
-import abc
 from . import tools, consts
-import inspect
 
 
 class pro_lambda(metaclass=tools.ClsInitMeta):
     """
-    Модификатор функций, который наделяет функцию арифметическими способностями.
-    Например, если исходная функция выглядит так:
+    Function modifier. Modified functions can work with mathematical operators, mix with other functions. Async
+    supported
 
     >>> some = pro_lambda(lambda : 1)
 
-    Теперь some можно использовать с любыми математическими операциями:
+    Now `some` can be used with math operators:
 
     >>> other = some + 1
     >>> other() # 1 + 1
     2
 
-    А так же с другими функциями:
-    >>> other = other - lambda: 10
+    And with other functions:
+    >>> other = other - (lambda: 10)
     >>> other() # 1 + 1 - 10
     8
 
-    Или другими LambdaMaths (LambdaMath по сути тоже функция, т.к. определяет метод __call__:
+    Or with other LambdaMaths (LambdaMath is callable):
 
     >>> other = other + pro_lambda(lambda : 8)
     >>> other()
     0
 
-    Кроме того, исходная функция может быть и сложной (содержать параметры):
+    Parametrized functions are also supported:
     >>> some = pro_lambda(lambda x, y: x + y)
     >>> other = some - 5
     >>> other(1, 1) # 1 + 1 - 5
     3
 
-    И так же можно комбинировать с другими функциями с параметрами, параметры правой функции при этом станут keyword-only
-    параметрами итоговой функции:
+    Right-side function can also be parametrised, it's arguments will become keyword-only arguments:
 
     >>> some = pro_lambda(lambda x, y: x + y)
-    >>> other = some + lambda z, y: z - y
+    >>> other = some + (lambda z, y: z - y)
     >>> other(1, 2, z=3) # (1 + 2) - (3 - 2)
     2
 
-    Кроме того, если любой из участников вычисления является асинхронной функцией или awaitable-объектом, то конечная
-    функция так же становится асинхронной:
+    If any of two functions is async or awaitable, result is also async:
 
     >>> async def foo():
     ...     await asyncio.sleep(1)
@@ -55,9 +50,6 @@ class pro_lambda(metaclass=tools.ClsInitMeta):
     >>> other = some + 1
     >>> await other()
     2
-
-    Поддерживаемые операторы: + - / * **
-    Так же поддерживаются логические операторы: > >= < <= & | ==
 
     """
 
