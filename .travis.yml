@@ -5,7 +5,8 @@ python:
 - 3.8-dev
 - nightly
 install:
-- python3 setup.py install test
+- pip3 install -r test_require.txt
+- python3 setup.py install
 script:
 - pytest
 deploy:
