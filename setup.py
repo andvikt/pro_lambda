@@ -17,6 +17,6 @@ setup(
     author_email='andvikt@gmail.com',
     description='Lambda with math operators support',
     tests_require=['pytest', 'pytest_asyncio'],
-    # long_description=desc,
-    # long_description_content_type='text/markdown',
+    long_description=desc,
+    long_description_content_type='text/markdown',
 )
