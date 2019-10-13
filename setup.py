@@ -9,6 +9,7 @@ with open('README.md', 'r') as f:
 setup(
     name='pro_lambda',
     version=version,
+    python_requires='>=3.7',
     packages=['pro_lambda'],
     url='https://github.com/andvikt/pro_lambda',
     license='MIT',
