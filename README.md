@@ -6,7 +6,7 @@ pip3 install pro_lambda
 
 ## Documentation
 
-You can find documentation [here](http://www.readthedocs.org/projects/pro_lambda)
+You can find documentation [here](http://pro-lambda.readthedocs.io)
 
 
 ## Description
