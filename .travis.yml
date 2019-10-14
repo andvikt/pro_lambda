@@ -11,7 +11,7 @@ install:
 env:
   - CODECOV_TOKEN=6c44aaab-8cca-43e6-b995-4a726fe99550
 script:
-- pytest
+- py.test  --cov-report term --cov=pro_lambda/
 deploy:
   provider: pypi
   user: __token__
