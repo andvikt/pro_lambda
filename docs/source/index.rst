@@ -12,7 +12,7 @@ pro_lambda make it possible to modify your functions with standart mathematical 
 
 It also supports async functions:
 
-.. literalinclude:: _examples/main.py
+.. literalinclude:: _examples/async.py
 
 API
 ===
