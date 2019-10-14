@@ -1,6 +1,6 @@
 import pytest
 from pytest import fixture
-from pro_lambda import pro_lambda
+from pro_lambda import pro_lambda, tools
 import asyncio
 
 
@@ -46,3 +46,22 @@ async def test_async():
     assert other.is_logical
     assert await other(1)
     assert not await other(2)
+
+    other = some + _some(2)
+
+    assert other.is_logical
+    assert await other(1) == 3
+
+    some = pro_lambda(lambda : 1)
+    other = some + _some(1)
+    assert await other() == 2
+
+    some = pro_lambda(lambda **kwargs: kwargs.get('x', 1))
+    other = some + _some(1)
+    assert await other() == 2
+
+
+def test_tools():
+    with pytest.raises(Exception):
+        with tools.log_exception('some message'):
+            raise Exception('hello')
