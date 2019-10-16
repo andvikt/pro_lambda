@@ -2,7 +2,9 @@ import asyncio
 from copy import copy
 import typing
 from . import tools, consts
+from setuptools_scm import get_version
 
+__version__ = get_version(root='..', relative_to=__file__)
 
 class pro_lambda(metaclass=tools.ClsInitMeta):
     """

@@ -1,14 +1,13 @@
 from setuptools import setup
 
-with open('VERSION', 'r') as f:
-    version = f.read()
 
 with open('README.md', 'r') as f:
     desc = f.read()
 
 setup(
     name='pro_lambda',
-    version=version,
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
     python_requires='>=3.7',
     packages=['pro_lambda'],
     url='https://github.com/andvikt/pro_lambda',
