@@ -4,7 +4,7 @@ import typing
 from . import tools, consts
 from setuptools_scm import get_version
 
-__version__ = get_version(root='..', relative_to=__file__)
+__version__ = get_version(root='.', relative_to=__file__)
 
 class pro_lambda(metaclass=tools.ClsInitMeta):
     """
@@ -60,7 +60,7 @@ class pro_lambda(metaclass=tools.ClsInitMeta):
         self._is_async = asyncio.iscoroutinefunction(foo)
         self._is_logical = False
 
-    def __call__(self, *args, **kwargs) -> typing.Awaitable:
+    def __call__(self, *args, **kwargs):
         return self.foo(*args, **kwargs)
 
     @property
