@@ -48,7 +48,7 @@ def _is_async(*foo):
 
     """
     for x in foo:
-        if getattr(x, '_is_async', False) or asyncio.iscoroutinefunction(x):
+        if getattr(x, '_is_async', False) or asyncio.iscoroutinefunction(x) or isinstance(x, typing.Awaitable):
             return True
     return False
 
