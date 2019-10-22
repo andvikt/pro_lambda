@@ -60,6 +60,11 @@ async def test_async():
     other = some + _some(1)
     assert await other() == 2
 
+def test_ne():
+    some = pro_lambda(lambda : False)
+    other = ~some
+    assert other()
+
 
 def test_tools():
     with pytest.raises(Exception):

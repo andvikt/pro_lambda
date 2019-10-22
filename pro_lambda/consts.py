@@ -19,7 +19,7 @@ ops = [
     ('__ne__', op.__ne__),
     ('__and__', op.__and__),
     ('__or__', op.__or__),
-    ('__invert__', op.__not__),
+    ('__invert__', lambda x, y: op.__not__(x)),
 ]
 
 logical = [
