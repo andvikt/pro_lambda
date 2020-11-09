@@ -14,7 +14,7 @@ def test_main():
     assert other(1, 2) == 4
 
     other = some + (lambda z, y: z - y)
-    assert other(1, y = 2, z = 3) == 4
+    assert other(1, y=2, z=3) == 4
 
 
 @pytest.mark.asyncio

@@ -12,6 +12,7 @@ except DistributionNotFound:
     from setuptools_scm import get_version
     __version__ = get_version(root='..', relative_to=__file__)
 
+
 class pro_lambda(metaclass=tools.ClsInitMeta):
     """
     Function modifier. Modified functions can work with mathematical operators, mix with other functions. Async
@@ -81,7 +82,7 @@ class pro_lambda(metaclass=tools.ClsInitMeta):
         """
         Returns True if self.foo is a product of logical operator (==, >, >=, <, <=, &, |)
         """
-        return self._is_async
+        return self._is_logical
 
     @tools.cls_init
     def _add_maths(cls):
