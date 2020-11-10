@@ -16,6 +16,9 @@ def test_main():
     other = some + (lambda z, y: z - y)
     assert other(1, y=2, z=3) == 4
 
+    other = some + pro_lambda(lambda z, y: z - y)
+    assert other(1, y=2, z=3) == 4
+
 
 @pytest.mark.asyncio
 async def test_async():

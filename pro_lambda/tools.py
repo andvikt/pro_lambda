@@ -57,7 +57,6 @@ def skip_not_needed_kwargs(foo):
     """
     Decorator, decorated foo will silently skip not needed kwargs
     """
-
     params: typing.Dict[str, inspect.Parameter] = inspect.signature(foo).parameters
     try:
         has_kwargs = max([x.kind is x.VAR_KEYWORD for x in params.values()])

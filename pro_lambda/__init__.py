@@ -63,7 +63,10 @@ class pro_lambda(metaclass=tools.ClsInitMeta):
     """
 
     def __init__(self, foo: typing.Callable):
-        self.foo = tools.skip_not_needed_kwargs(foo)
+        if isinstance(foo, pro_lambda):
+            self.foo = tools.skip_not_needed_kwargs(foo.foo)
+        else:
+            self.foo = tools.skip_not_needed_kwargs(foo)
         self._is_async = asyncio.iscoroutinefunction(foo)
         self._is_logical = False
 
@@ -95,7 +98,9 @@ class pro_lambda(metaclass=tools.ClsInitMeta):
                 _other = other
 
                 setattr(ret, '_is_async', tools._is_async(other, self))
-                if isinstance(other, typing.Callable):
+                if isinstance(other, pro_lambda):
+                    other = tools.skip_not_needed_kwargs(other.foo)
+                elif isinstance(other, typing.Callable):
                     other = tools.skip_not_needed_kwargs(other)
 
                 def _foo_simple(*args, **kwargs):
